@@ -39,8 +39,13 @@ export function Navbar({ onOpenAuth }: NavbarProps = {}) {
           {/* Left: Brand Monogram Tile + Wordmark */}
           <Link href="/" className={styles.brandLink} aria-label="MANI 272 Home">
             <div className={styles.monogramTile} aria-hidden="true">
-              <span className={styles.monoM}>M</span>
-              <span className={styles.monoAccent}>272</span>
+              <img
+                src="/assets/logo-animated.gif"
+                alt="MANI 272"
+                width={36}
+                height={36}
+                className={styles.logoImage}
+              />
             </div>
             <div className={styles.wordmark}>
               <span className={styles.wordmarkPrimary}>MANI</span>

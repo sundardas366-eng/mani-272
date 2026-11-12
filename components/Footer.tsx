@@ -21,8 +21,13 @@ export function Footer() {
           <div className={styles.brandGroup}>
             <div className={styles.brandRow}>
               <div className={styles.monogramTile} aria-hidden="true">
-                <span className={styles.monoM}>M</span>
-                <span className={styles.monoAccent}>272</span>
+                <img
+                  src="/assets/logo-animated.gif"
+                  alt="MANI 272"
+                  width={32}
+                  height={32}
+                  className={styles.logoImage}
+                />
               </div>
               <div className={styles.wordmark}>
                 <span className={styles.wordmarkPrimary}>MANI</span>
