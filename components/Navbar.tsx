@@ -13,9 +13,10 @@ import styles from "./Navbar.module.css";
 
 interface NavbarProps {
   onOpenAuth?: () => void;
+  onOpenProducts?: () => void;
 }
 
-export function Navbar({ onOpenAuth }: NavbarProps = {}) {
+export function Navbar({ onOpenAuth, onOpenProducts }: NavbarProps = {}) {
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -80,11 +81,33 @@ export function Navbar({ onOpenAuth }: NavbarProps = {}) {
             </div>
           </nav>
 
-          {/* Right: Theme Switcher + Portal CTA + Sign in (Desktop) */}
+          {/* Right: Theme Switcher + Product Total + Portal CTA (Desktop) */}
           <div className={styles.rightActions}>
             <div className={styles.themeWrap}>
               <ThemeSwitcher />
             </div>
+
+            {onOpenProducts ? (
+              <button
+                type="button"
+                className={styles.productTotalBtn}
+                onClick={onOpenProducts}
+                aria-label="Open Product Total catalog"
+                title="View All Products & Software Builds"
+              >
+                <span className={styles.productDot} aria-hidden="true" />
+                PRODUCT TOTAL
+              </button>
+            ) : (
+              <a
+                href="#product-total"
+                className={styles.productTotalBtn}
+                title="View All Products & Software Builds"
+              >
+                <span className={styles.productDot} aria-hidden="true" />
+                PRODUCT TOTAL
+              </a>
+            )}
 
             <Button
               asPortalLink
@@ -116,6 +139,10 @@ export function Navbar({ onOpenAuth }: NavbarProps = {}) {
         onOpenAuth={() => {
           setDrawerOpen(false);
           onOpenAuth?.();
+        }}
+        onOpenProducts={() => {
+          setDrawerOpen(false);
+          onOpenProducts?.();
         }}
       />
     </>

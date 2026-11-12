@@ -95,6 +95,56 @@
   min-width: 160px;
 }
 
+.productTotalCta {
+  min-width: 155px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  color: #ffffff;
+  padding: 0 18px;
+  border-radius: var(--radius-sm, 6px);
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 18px rgba(239, 68, 68, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  user-select: none;
+}
+
+.productTotalCta:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #ffffff;
+  box-shadow: 0 0 24px rgba(239, 68, 68, 0.6);
+  transform: translateY(-1px);
+}
+
+.ctaDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+  animation: pulseDotHero 1.6s infinite;
+}
+
+.productTotalCta:hover .ctaDot {
+  background-color: #ffffff;
+  box-shadow: 0 0 8px #ffffff;
+}
+
+@keyframes pulseDotHero {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
 .ctaGhost {
   min-width: 100px;
 }

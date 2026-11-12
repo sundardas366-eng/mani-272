@@ -12,9 +12,10 @@ interface MobileDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenAuth?: () => void;
+  onOpenProducts?: () => void;
 }
 
-export function MobileDrawer({ isOpen, onClose, onOpenAuth }: MobileDrawerProps) {
+export function MobileDrawer({ isOpen, onClose, onOpenAuth, onOpenProducts }: MobileDrawerProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -64,6 +65,20 @@ export function MobileDrawer({ isOpen, onClose, onOpenAuth }: MobileDrawerProps)
 
         {/* Action Buttons */}
         <div className={styles.actionsGroup}>
+          {onOpenProducts && (
+            <button
+              type="button"
+              className={styles.productTotalMobileBtn}
+              onClick={() => {
+                onClose();
+                onOpenProducts();
+              }}
+            >
+              <span className={styles.productMobileDot} aria-hidden="true" />
+              <span>PRODUCT TOTAL — VIEW CATALOG</span>
+            </button>
+          )}
+
           <Button
             asPortalLink
             variant="solid"

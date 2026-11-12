@@ -10,9 +10,10 @@ import styles from "./Hero.module.css";
 
 interface HeroProps {
   onOpenAuth?: () => void;
+  onOpenProducts?: () => void;
 }
 
-export function Hero({ onOpenAuth }: HeroProps = {}) {
+export function Hero({ onOpenAuth, onOpenProducts }: HeroProps = {}) {
   return (
     <section className={styles.heroSection} aria-labelledby="hero-heading">
       <div className={styles.heroBackgroundMesh} aria-hidden="true" />
@@ -44,7 +45,7 @@ export function Hero({ onOpenAuth }: HeroProps = {}) {
               {heroContent.description}
             </p>
 
-            {/* 2 CTAs: Portal (Solid), How it Works (Outline) */}
+            {/* CTAs: Portal (Solid), Product Total (Highlighted), How it Works (Outline) */}
             <div className={styles.ctaGroup}>
               <Button
                 asPortalLink
@@ -54,6 +55,27 @@ export function Hero({ onOpenAuth }: HeroProps = {}) {
               >
                 {heroContent.ctaPrimary}
               </Button>
+
+              {onOpenProducts ? (
+                <button
+                  type="button"
+                  className={styles.productTotalCta}
+                  onClick={onOpenProducts}
+                  aria-label="Open Product Total showcase"
+                >
+                  <span className={styles.ctaDot} aria-hidden="true" />
+                  <span>PRODUCT TOTAL</span>
+                </button>
+              ) : (
+                <a
+                  href="#product-total"
+                  className={styles.productTotalCta}
+                  aria-label="Open Product Total showcase"
+                >
+                  <span className={styles.ctaDot} aria-hidden="true" />
+                  <span>PRODUCT TOTAL</span>
+                </a>
+              )}
 
               <Button
                 href="#how"

@@ -8,6 +8,20 @@ export interface NavLink {
   href: string;
 }
 
+export interface ProductItem {
+  id: string;
+  name: string;
+  tagline: string;
+  category: "VIP" | "BYPASS" | "TOOL" | "LOADER";
+  status: "LIVE" | "UNDETECTED" | "UPDATED";
+  popular?: boolean;
+  price: string;
+  plans: string[];
+  features: string[];
+  compatibility: string;
+  badge?: string;
+}
+
 export interface StatItem {
   id: string;
   targetValue: number;
@@ -53,11 +67,91 @@ export interface ContactCard {
 }
 
 export const navLinks: NavLink[] = [
+  { label: "Product Total", href: "#product-total" },
   { label: "Features", href: "#features" },
   { label: "SDKs", href: "#sdks" },
   { label: "How It Works", href: "#how" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
+];
+
+export const productsData: ProductItem[] = [
+  {
+    id: "prod-vip-bypass",
+    name: "MANI 272 — VIP Private Bypass",
+    tagline: "Kernel-level memory bypass with real-time heartbeat and zero ban record.",
+    category: "VIP",
+    status: "UNDETECTED",
+    popular: true,
+    price: "$25 / Week · $60 / Month",
+    plans: ["1 Day Trial", "7 Days VIP", "30 Days Pro", "Lifetime Access"],
+    features: [
+      "Kernel Ring 0 Protection",
+      "Automated Hardware (HWID) Binding",
+      "Streamproof & Hidden Overlay",
+      "Instant Key Delivery via KeyAuth",
+      "Automatic Daily Signature Refresh",
+    ],
+    compatibility: "Windows 10 & 11 (20H2 - 24H2)",
+    badge: "BESTSELLER",
+  },
+  {
+    id: "prod-external-suite",
+    name: "MANI 272 — External Software Suite",
+    tagline: "Zero-injection external driver architecture with ultra low-latency verification.",
+    category: "BYPASS",
+    status: "UNDETECTED",
+    popular: true,
+    price: "$35 / Month",
+    plans: ["7 Days", "30 Days", "Lifetime Access"],
+    features: [
+      "Zero Code Injection (Full External)",
+      "HMAC-SHA256 Encrypted Stream",
+      "2 Dedicated Device Seats Default",
+      "Sub-7 Second Handshake Guarantee",
+      "24/7 Cloud Anti-Tamper Infrastructure",
+    ],
+    compatibility: "Windows 10 / 11 x64",
+    badge: "VERIFIED",
+  },
+  {
+    id: "prod-hwid-spoofer",
+    name: "MANI 272 — Kernel HWID Spoofer",
+    tagline: "Permanent & temporary hardware spoofing for motherboard, disk, NIC, and BIOS.",
+    category: "TOOL",
+    status: "LIVE",
+    popular: false,
+    price: "$15 / Month · $45 / Lifetime",
+    plans: ["1 Month Pass", "Lifetime Spoofer"],
+    features: [
+      "Motherboard UUID & Serial Cleaner",
+      "NVMe / SSD Disk Serial Randomizer",
+      "Network Adapter & MAC Address Spoofer",
+      "One-Click Safe Revert / Restore Option",
+      "Compatible with Major Anti-Cheats (EAC / BE / Vanguard)",
+    ],
+    compatibility: "ASUS, MSI, Gigabyte, ASRock, Dell, HP",
+    badge: "TOOL",
+  },
+  {
+    id: "prod-custom-loader",
+    name: "MANI 272 — KeyAuth Custom Loader",
+    tagline: "C++ & C# Native client loader with custom branding, anti-debug, and license gate.",
+    category: "LOADER",
+    status: "UPDATED",
+    popular: false,
+    price: "Custom Tier / Reseller Included",
+    plans: ["Developer License", "Reseller Unlimited"],
+    features: [
+      "Custom GUI & Animated Branding",
+      "VMProtect / Themida Integrity Guard",
+      "Hardware Ban Blacklist System",
+      "Discord Webhook Notification Dispatch",
+      "Complete Source Code & Documentation",
+    ],
+    compatibility: "Visual Studio 2022 / .NET / C++ Native",
+    badge: "LOADER",
+  },
 ];
 
 export const heroContent = {
