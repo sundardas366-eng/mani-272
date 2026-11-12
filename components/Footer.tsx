@@ -50,7 +50,7 @@ export function Footer() {
               className={styles.footerLink}
               showIcon={true}
             >
-              Portal
+              KeyAuth Portal
             </ExternalLink>
             <Link href="/privacy" className={styles.footerLink}>
               Privacy

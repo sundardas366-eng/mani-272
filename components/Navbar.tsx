@@ -92,7 +92,7 @@ export function Navbar({ onOpenAuth }: NavbarProps = {}) {
               size="sm"
               className={styles.portalCtaBtn}
             >
-              Portal
+              KeyAuth Portal
             </Button>
 
             {/* Mobile Hamburger Button */}

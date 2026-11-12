@@ -201,7 +201,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               className={styles.primarySubmitBtn}
               data-placeholder={isPlaceholder ? "true" : undefined}
             >
-              <span>Continue to Portal</span>
+              <span>Continue to KeyAuth Portal</span>
               <Icon name="external" size={14} />
             </button>
           </form>

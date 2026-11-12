@@ -66,7 +66,7 @@ export const heroContent = {
   headlineSub: "Software licensing, locked down.",
   description:
     "Issue keys, bind them to hardware, and verify every session in under 7 seconds. Cryptographic integrity meets friction-free developer operations.",
-  ctaPrimary: "Enter Portal",
+  ctaPrimary: "Enter KeyAuth Portal",
   ctaSecondary: "See how it works",
   ctaGhost: "Sign in",
   trustBadges: [

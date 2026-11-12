@@ -61,7 +61,7 @@ export function LicenseSection() {
 
             <div className={styles.ctaWrap}>
               <Button asPortalLink variant="solid" size="md">
-                Enter Portal
+                Enter KeyAuth Portal
               </Button>
             </div>
           </div>
