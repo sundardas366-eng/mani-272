@@ -150,6 +150,16 @@
   color: #ffffff !important;
   border-color: #ef4444 !important;
   box-shadow: 0 0 16px rgba(239, 68, 68, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  animation: musicButtonGlow 2s infinite ease-in-out;
+}
+
+@keyframes musicButtonGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(239, 68, 68, 0.8);
+  }
 }
 
 .statusIndicator {

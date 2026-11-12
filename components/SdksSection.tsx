@@ -326,8 +326,8 @@ curl -X POST "https://auth.mani272api.xyz/api/v2/verify" \\
               ))}
             </div>
 
-            {/* Code Content */}
-            <div className={styles.codeContent}>
+            {/* Code Content with Smooth Tab Transition */}
+            <div key={activeLang} className={styles.codeContent}>
               <pre className={styles.codePre}>
                 <code>
                   {currentSdk.lines.map((line, idx) => (

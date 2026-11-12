@@ -26,6 +26,16 @@
 .statCol {
   position: relative;
   display: flex;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.statCol:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.statCol:hover .numberMono {
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(var(--accent-rgb), 0.4);
 }
 
 .divider {

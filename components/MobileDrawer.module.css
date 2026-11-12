@@ -1,12 +1,12 @@
 .overlay {
   position: fixed;
   inset: 0;
-  top: 98px;
-  background-color: rgba(6, 6, 6, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  z-index: 99;
-  animation: fadeIn 0.18s ease-out;
+  top: 106px;
+  background-color: rgba(6, 6, 6, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  z-index: 1050;
+  animation: fadeIn 0.2s ease-out;
 }
 
 @keyframes fadeIn {
