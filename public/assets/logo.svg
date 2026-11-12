@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" width="160" height="40" fill="none">
+  <defs>
+    <style>
+      .tile-bg { fill: #111111; stroke: rgba(255, 255, 255, 0.14); stroke-width: 1px; }
+      .tile-text { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 11px; letter-spacing: -0.04em; }
+      .tile-m { fill: #f4f4f5; }
+      .accent-elem { fill: #3b82f6; fill: var(--accent, #3b82f6); }
+      .wordmark-main { font-family: 'Inter', -apple-system, sans-serif; font-weight: 800; font-size: 18px; fill: #f4f4f5; letter-spacing: -0.025em; }
+      .wordmark-accent { font-family: 'Inter', -apple-system, sans-serif; font-weight: 800; font-size: 18px; fill: #3b82f6; fill: var(--accent, #3b82f6); letter-spacing: -0.025em; }
+    </style>
+  </defs>
+
+  <!-- M272 Tile (Rounded 7px, 1px border) -->
+  <rect x="1" y="4" width="32" height="32" rx="7" ry="7" class="tile-bg" />
+  <text x="5" y="24" class="tile-text">
+    <tspan class="tile-m">M</tspan><tspan class="accent-elem">272</tspan>
+  </text>
+
+  <!-- Wordmark -->
+  <text x="44" y="26">
+    <tspan class="wordmark-main">Money</tspan>
+    <tspan class="wordmark-accent">272</tspan>
+  </text>
+</svg>
+

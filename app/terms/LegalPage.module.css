@@ -1,0 +1,132 @@
+.legalWrapper {
+  min-height: 100vh;
+  padding: 80px 0 100px;
+  position: relative;
+  z-index: 2;
+}
+
+.container {
+  max-width: 900px;
+}
+
+.navBackRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.backLink:hover {
+  color: var(--accent);
+}
+
+.flipArrow {
+  transform: rotate(180deg);
+}
+
+.documentCard {
+  background: var(--surface-matte);
+  border: 1px solid var(--border-matte);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  box-shadow: var(--surface-inset-glow), var(--shadow-elevation);
+}
+
+.docHeader {
+  margin-bottom: 28px;
+}
+
+.badgeWrap {
+  margin-bottom: 14px;
+}
+
+.docTitle {
+  font-family: var(--font-sans);
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.docSubtitle {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.sectionDivider {
+  height: 1px;
+  background-color: var(--border-subtle);
+  margin-bottom: 36px;
+}
+
+.contentBody {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.legalSection h2 {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.015em;
+  margin-bottom: 12px;
+}
+
+.legalSection p {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.legalSection ul {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legalSection li {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.legalSection strong {
+  color: var(--text-main);
+}
+
+.legalSection code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .documentCard {
+    padding: 28px 20px;
+  }
+}
+

@@ -1,0 +1,56 @@
+.switcherContainer {
+  display: inline-flex;
+  align-items: center;
+}
+
+.dotsRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.dotButton,
+.dotPlaceholder {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.15s ease;
+}
+
+.dotPlaceholder {
+  cursor: default;
+  opacity: 0.8;
+}
+
+.colorPill {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: block;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dotButton:hover .colorPill {
+  transform: scale(1.2);
+}
+
+.activeDot {
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.4);
+}
+
+.activeDot .colorPill {
+  transform: scale(1.15);
+}
+

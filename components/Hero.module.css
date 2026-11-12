@@ -1,0 +1,252 @@
+.heroSection {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 104px 0 84px;
+  overflow: hidden;
+}
+
+.heroBackgroundMesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(var(--accent-rgb), 0.12), transparent 70%),
+    radial-gradient(ellipse 40% 40% at 80% 30%, rgba(var(--accent-rgb), 0.08), transparent 60%),
+    linear-gradient(180deg, transparent 0%, rgba(10, 10, 10, 0.8) 85%, #0a0a0a 100%);
+  z-index: 0;
+}
+
+.heroContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 44px;
+  align-items: center;
+}
+
+/* LEFT COLUMN */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.badgeWrap {
+  margin-bottom: 20px;
+}
+
+.headline {
+  font-family: var(--font-sans);
+  font-size: clamp(40px, 5.2vw, 64px);
+  line-height: 1.04;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  color: var(--text-main);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.headlineBrand {
+  display: block;
+}
+
+.accentDigit {
+  color: var(--accent);
+}
+
+.headlineSub {
+  display: block;
+  color: var(--text-secondary);
+  font-weight: 800;
+  font-size: clamp(28px, 3.8vw, 48px);
+  letter-spacing: -0.03em;
+  margin-top: 4px;
+}
+
+.subCopy {
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-bottom: 32px;
+}
+
+/* 3 CTAS */
+.ctaGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  min-width: 150px;
+}
+
+.ctaSecondary {
+  min-width: 160px;
+}
+
+.ctaGhost {
+  min-width: 100px;
+}
+
+/* TRUST BAR */
+.trustBar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.trustDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+/* BRAND MEANING LINE */
+.meaningLine {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  flex-wrap: wrap;
+}
+
+.meaningPrefix {
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.numAccent {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.meaningDivider {
+  color: var(--text-dim);
+}
+
+/* RIGHT COLUMN */
+.rightCol {
+  width: 100%;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .leftCol {
+    text-align: center;
+    align-items: center;
+  }
+
+  .subCopy {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ctaGroup {
+    justify-content: center;
+  }
+
+  .trustBar {
+    justify-content: center;
+  }
+
+  .meaningLine {
+    justify-content: center;
+  }
+
+  .rightCol {
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroSection {
+    padding: 68px 0 24px;
+    min-height: auto;
+  }
+
+  .headline {
+    font-size: 34px;
+  }
+
+  .headlineSub {
+    font-size: 24px;
+  }
+
+  .subCopy {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .ctaGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .ctaPrimary {
+    grid-column: span 2;
+  }
+
+  .trustBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .meaningLine {
+    font-size: 10px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 380px) {
+  .ctaGroup {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaPrimary {
+    grid-column: auto;
+  }
+}
+

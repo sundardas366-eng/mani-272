@@ -1,0 +1,78 @@
+.notFoundWrapper {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.notFoundCard {
+  width: 100%;
+  max-width: 520px;
+  background: var(--surface-matte);
+  border: 1px solid var(--border-matte);
+  border-radius: var(--radius-xl);
+  padding: 48px 36px;
+  text-align: center;
+  box-shadow: var(--surface-inset-glow), var(--shadow-elevation);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badgeWrap {
+  margin-bottom: 20px;
+}
+
+.codeMono {
+  font-family: var(--font-mono);
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-main);
+  letter-spacing: -0.05em;
+  margin-bottom: 16px;
+}
+
+.accentDigit {
+  color: var(--accent);
+}
+
+.title {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.description {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.actionWrap {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .notFoundCard {
+    padding: 36px 20px;
+  }
+
+  .codeMono {
+    font-size: 64px;
+  }
+
+  .title {
+    font-size: 19px;
+  }
+}
+

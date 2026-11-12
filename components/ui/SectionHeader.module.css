@@ -1,0 +1,61 @@
+.header {
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.badgeWrap {
+  display: flex;
+  margin-bottom: 14px;
+}
+
+.center .badgeWrap {
+  justify-content: center;
+}
+
+.left .badgeWrap {
+  justify-content: flex-start;
+}
+
+.title {
+  font-family: var(--font-sans);
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+  margin-bottom: 14px;
+}
+
+.subtitle {
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+.center .subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 640px) {
+  .header {
+    margin-bottom: 36px;
+  }
+  .title {
+    font-size: 26px;
+  }
+  .subtitle {
+    font-size: 13.5px;
+  }
+}
+
