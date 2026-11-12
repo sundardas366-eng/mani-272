@@ -4,6 +4,7 @@ import "./globals.css";
 import { site } from "@/lib/site";
 import { CursorTrail } from "@/components/CursorTrail";
 import { TopMusicBar } from "@/components/TopMusicBar";
+import { ReactBitsBackground } from "@/components/backgrounds/ReactBitsBackground";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -114,6 +115,7 @@ export default function RootLayout({
         </a>
         <TopMusicBar />
         <CursorTrail />
+        <ReactBitsBackground />
         <div className="ambient-glow-mesh" aria-hidden="true" />
         <div className="cyber-grid-overlay" aria-hidden="true" />
         <div className="vignette-overlay" aria-hidden="true" />
