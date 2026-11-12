@@ -42,7 +42,12 @@ export function ProductsModal({
 
   if (!isOpen) return null;
 
-  const categories = ["ALL", "VIP", "BYPASS", "TOOL", "LOADER"];
+  const categoryList = [
+    { id: "ALL", label: `ALL (${productsData.length})` },
+    { id: "VIP", label: `VIP (${productsData.filter((p) => p.category === "VIP").length})` },
+    { id: "BYPASS", label: `BYPASS (${productsData.filter((p) => p.category === "BYPASS").length})` },
+    { id: "TOOL", label: `TOOLS (${productsData.filter((p) => p.category === "TOOL").length})` },
+  ];
 
   const filteredProducts = productsData.filter((item) => {
     const matchesCategory =
@@ -100,18 +105,18 @@ export function ProductsModal({
         {/* CONTROLS (TABS + SEARCH) */}
         <div className={styles.controlsBar}>
           <div className={styles.filterTabs} role="tablist" aria-label="Product categories">
-            {categories.map((cat) => (
+            {categoryList.map((cat) => (
               <button
-                key={cat}
+                key={cat.id}
                 type="button"
                 role="tab"
-                aria-selected={selectedCategory === cat}
+                aria-selected={selectedCategory === cat.id}
                 className={`${styles.filterBtn} ${
-                  selectedCategory === cat ? styles.filterBtnActive : ""
+                  selectedCategory === cat.id ? styles.filterBtnActive : ""
                 }`}
-                onClick={() => setSelectedCategory(cat)}
+                onClick={() => setSelectedCategory(cat.id)}
               >
-                {cat === "ALL" ? `ALL (${productsData.length})` : cat}
+                {cat.label}
               </button>
             ))}
           </div>
@@ -220,3 +225,4 @@ export function ProductsModal({
     </div>
   );
 }
+

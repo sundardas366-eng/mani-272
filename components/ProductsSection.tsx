@@ -12,7 +12,12 @@ interface ProductsSectionProps {
 export function ProductsSection({ onOpenModal }: ProductsSectionProps) {
   const [activeCategory, setActiveCategory] = useState<string>("ALL");
 
-  const categories = ["ALL", "VIP", "BYPASS", "TOOL", "LOADER"];
+  const categoryList = [
+    { id: "ALL", label: `ALL PRODUCTS (${productsData.length})` },
+    { id: "VIP", label: `VIP EXCLUSIVE (${productsData.filter((p) => p.category === "VIP").length})` },
+    { id: "BYPASS", label: `BYPASS (${productsData.filter((p) => p.category === "BYPASS").length})` },
+    { id: "TOOL", label: `TOOLS (${productsData.filter((p) => p.category === "TOOL").length})` },
+  ];
 
   const filteredProducts = productsData.filter((item) =>
     activeCategory === "ALL" ? true : item.category === activeCategory
@@ -48,18 +53,18 @@ export function ProductsSection({ onOpenModal }: ProductsSectionProps) {
 
         {/* Filter Tabs */}
         <div className={styles.filterRow} role="tablist" aria-label="Product categories">
-          {categories.map((cat) => (
+          {categoryList.map((cat) => (
             <button
-              key={cat}
+              key={cat.id}
               type="button"
               role="tab"
-              aria-selected={activeCategory === cat}
+              aria-selected={activeCategory === cat.id}
               className={`${styles.categoryTab} ${
-                activeCategory === cat ? styles.categoryTabActive : ""
+                activeCategory === cat.id ? styles.categoryTabActive : ""
               }`}
-              onClick={() => setActiveCategory(cat)}
+              onClick={() => setActiveCategory(cat.id)}
             >
-              {cat === "ALL" ? `ALL PRODUCTS (${productsData.length})` : cat}
+              {cat.label}
             </button>
           ))}
         </div>
@@ -133,3 +138,4 @@ export function ProductsSection({ onOpenModal }: ProductsSectionProps) {
     </section>
   );
 }
+
