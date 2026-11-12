@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { site } from "@/lib/site";
 import { productsData, ProductItem } from "@/lib/content";
 import { Icon } from "./ui/Icon";
-import { UidBypassDetailsModal } from "./UidBypassDetailsModal";
+import { ProductDetailsModal } from "./ProductDetailsModal";
 import styles from "./ProductsModal.module.css";
 
 interface ProductsModalProps {
@@ -20,7 +20,7 @@ export function ProductsModal({
 }: ProductsModalProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [isUidDetailsOpen, setIsUidDetailsOpen] = useState<boolean>(false);
+  const [selectedProductForDetails, setSelectedProductForDetails] = useState<ProductItem | null>(null);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -173,17 +173,15 @@ export function ProductsModal({
                 </div>
 
                 <div className={styles.btnActions}>
-                  {product.id === "prod-uid-bypass" && (
-                    <button
-                      type="button"
-                      className={styles.discordBtn}
-                      onClick={() => setIsUidDetailsOpen(true)}
-                      title="View Full UID Bypass Details"
-                      style={{ color: "#ef4444", borderColor: "rgba(239, 68, 68, 0.45)", fontWeight: 700 }}
-                    >
-                      View Details 📋
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    className={styles.discordBtn}
+                    onClick={() => setSelectedProductForDetails(product)}
+                    title={`View full specifications for ${product.name}`}
+                    style={{ color: "#ef4444", borderColor: "rgba(239, 68, 68, 0.45)", fontWeight: 700 }}
+                  >
+                    View Details 📋
+                  </button>
                   <a
                     href={site.portalUrl}
                     target="_blank"
@@ -236,10 +234,11 @@ export function ProductsModal({
         </div>
       </div>
 
-      {/* UID Bypass Specification Modal */}
-      <UidBypassDetailsModal
-        isOpen={isUidDetailsOpen}
-        onClose={() => setIsUidDetailsOpen(false)}
+      {/* Universal Product Details Modal */}
+      <ProductDetailsModal
+        product={selectedProductForDetails}
+        isOpen={!!selectedProductForDetails}
+        onClose={() => setSelectedProductForDetails(null)}
       />
     </div>
   );

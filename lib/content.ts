@@ -20,6 +20,7 @@ export interface ProductItem {
   features: string[];
   compatibility: string;
   badge?: string;
+  fullDetails?: string;
 }
 
 export interface StatItem {
@@ -68,7 +69,6 @@ export interface ContactCard {
 
 export const navLinks: NavLink[] = [
   { label: "Product Total", href: "#product-total" },
-  { label: "UID Bypass", href: "#uid-bypass" },
   { label: "Features", href: "#features" },
   { label: "SDKs", href: "#sdks" },
   { label: "How It Works", href: "#how" },
@@ -115,6 +115,33 @@ export const productsData: ProductItem[] = [
     ],
     compatibility: "All Servers · Regular Emulators (Except MEmu & LDPlayer)",
     badge: "SAFE ALL SERVER",
+    fullDetails: `# UID BYPASS | SAFE ALL SERVER
+
+Advanced Aimbot & Visuals  
+Internal Panel | Main ID Safe  
+Easy Setup & Full Support  
+All Servers Working on Regular Emulators (Except MEmu and LDPlayer)
+
+―――――――――――――――――――
+PRICE LIST
+―――――――――――――――――――
+
+> 1 Day - $2  
+> 3 Days - $4  
+> 1 Week - $5  
+> 1 Month - $12  
+> Lifetime - $60  
+
+―――――――――――――――――――
+UID BYPASS API
+―――――――――――――――――――
+
+$20 — 200 UID Limit  
+$30 — 400 UID Limit  
+$40 — 600 UID Limit  
+$50 — 800 UID Limit  
+$60 — 1,000 UID Limit  
+$100 — Unlimited UID`,
   },
   {
     id: "prod-brutal",

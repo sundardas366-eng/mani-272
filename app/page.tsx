@@ -5,7 +5,6 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { StatsStrip } from "@/components/StatsStrip";
 import { ProductsSection } from "@/components/ProductsSection";
-import { UidBypassSection } from "@/components/UidBypassSection";
 import { ProductsModal } from "@/components/ProductsModal";
 import { LicenseSection } from "@/components/LicenseSection";
 import { SdksSection } from "@/components/SdksSection";
@@ -48,10 +47,7 @@ export default function HomePage() {
         {/* 4. Product Total Showcase Section */}
         <ProductsSection onOpenModal={handleOpenProducts} />
 
-        {/* 5. Dedicated UID Bypass Showcase & Pricing Section */}
-        <UidBypassSection />
-
-        {/* 6. Licence / Features Section (4 blocks + mock card + MeaningRow) */}
+        {/* 5. Licence / Features Section (4 blocks + mock card + MeaningRow) */}
         <LicenseSection />
 
         {/* 6. Developer SDKs Section (Integrate in Under 3 Minutes) */}

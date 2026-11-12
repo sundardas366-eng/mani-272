@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { site } from "@/lib/site";
-import { productsData } from "@/lib/content";
-import { UidBypassDetailsModal } from "./UidBypassDetailsModal";
+import { productsData, ProductItem } from "@/lib/content";
+import { ProductDetailsModal } from "./ProductDetailsModal";
 import styles from "./ProductsSection.module.css";
 
 interface ProductsSectionProps {
@@ -12,7 +12,7 @@ interface ProductsSectionProps {
 
 export function ProductsSection({ onOpenModal }: ProductsSectionProps) {
   const [activeCategory, setActiveCategory] = useState<string>("ALL");
-  const [isUidDetailsOpen, setIsUidDetailsOpen] = useState<boolean>(false);
+  const [selectedProductForDetails, setSelectedProductForDetails] = useState<ProductItem | null>(null);
 
   const categoryList = [
     { id: "ALL", label: `ALL PRODUCTS (${productsData.length})` },
@@ -114,17 +114,15 @@ export function ProductsSection({ onOpenModal }: ProductsSectionProps) {
                 </div>
 
                 <div className={styles.actionBtns}>
-                  {prod.id === "prod-uid-bypass" && (
-                    <button
-                      type="button"
-                      className={styles.inquireBtn}
-                      onClick={() => setIsUidDetailsOpen(true)}
-                      title="View Full UID Bypass Details"
-                      style={{ color: "#ef4444", borderColor: "rgba(239, 68, 68, 0.45)", fontWeight: 700 }}
-                    >
-                      View Details 📋
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    className={styles.inquireBtn}
+                    onClick={() => setSelectedProductForDetails(prod)}
+                    title={`View full specifications for ${prod.name}`}
+                    style={{ color: "#ef4444", borderColor: "rgba(239, 68, 68, 0.45)", fontWeight: 700 }}
+                  >
+                    View Details 📋
+                  </button>
                   <a
                     href={site.portalUrl}
                     target="_blank"
@@ -149,10 +147,11 @@ export function ProductsSection({ onOpenModal }: ProductsSectionProps) {
         </div>
       </div>
 
-      {/* UID Bypass Specification Modal */}
-      <UidBypassDetailsModal
-        isOpen={isUidDetailsOpen}
-        onClose={() => setIsUidDetailsOpen(false)}
+      {/* Universal Product Details Modal */}
+      <ProductDetailsModal
+        product={selectedProductForDetails}
+        isOpen={!!selectedProductForDetails}
+        onClose={() => setSelectedProductForDetails(null)}
       />
     </section>
   );
