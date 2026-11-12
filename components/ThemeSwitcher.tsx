@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ThemeSwitcher.module.css";
 
-export type AccentColor = "blue" | "violet" | "emerald" | "amber" | "rose";
+export type AccentColor = "red" | "blue" | "violet" | "emerald" | "amber";
 
 interface ThemeOption {
   id: AccentColor;
@@ -12,11 +12,11 @@ interface ThemeOption {
 }
 
 const THEME_OPTIONS: ThemeOption[] = [
+  { id: "red", label: "Crimson Red", hex: "#ef4444" },
   { id: "blue", label: "Cobalt Blue", hex: "#3b82f6" },
   { id: "violet", label: "Electric Violet", hex: "#8b5cf6" },
   { id: "emerald", label: "Matrix Emerald", hex: "#10b981" },
   { id: "amber", label: "Cyber Amber", hex: "#f59e0b" },
-  { id: "rose", label: "Neon Rose", hex: "#f43f5e" },
 ];
 
 interface ThemeSwitcherProps {
@@ -24,18 +24,18 @@ interface ThemeSwitcherProps {
 }
 
 export function ThemeSwitcher({ className = "" }: ThemeSwitcherProps) {
-  const [currentAccent, setCurrentAccent] = useState<AccentColor>("blue");
+  const [currentAccent, setCurrentAccent] = useState<AccentColor>("red");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     const saved = localStorage.getItem("m272_accent") as AccentColor;
-    if (saved && ["blue", "violet", "emerald", "amber", "rose"].includes(saved)) {
+    if (saved && ["red", "blue", "violet", "emerald", "amber"].includes(saved)) {
       setCurrentAccent(saved);
       document.documentElement.setAttribute("data-accent", saved);
     } else {
       const activeAttr = document.documentElement.getAttribute("data-accent") as AccentColor;
-      if (activeAttr && ["blue", "violet", "emerald", "amber", "rose"].includes(activeAttr)) {
+      if (activeAttr && ["red", "blue", "violet", "emerald", "amber"].includes(activeAttr)) {
         setCurrentAccent(activeAttr);
       }
     }

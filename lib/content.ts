@@ -61,7 +61,7 @@ export const navLinks: NavLink[] = [
 
 export const heroContent = {
   pillText: "SOFTWARE LICENSING ● HMAC-SHA256 ● HWID BOUND",
-  headlinePrefix: "Money",
+  headlinePrefix: "MANI",
   headlineAccent: "272",
   headlineSub: "Software licensing, locked down.",
   description:
@@ -117,7 +117,7 @@ export const featuresContent = {
   badge: "CORE PROTECTION",
   heading: "One key. One machine. Zero leaks.",
   subcopy:
-    "Eliminate unauthorized key sharing, cloned seats, and MITM replay attacks. Money 272 pairs SHA256 hardware fingerprints with cryptographically signed payloads.",
+    "Eliminate unauthorized key sharing, cloned seats, and MITM replay attacks. MANI 272 pairs SHA256 hardware fingerprints with cryptographically signed payloads.",
   features: [
     {
       title: "HMAC-SHA256 signed payloads",
@@ -263,24 +263,24 @@ export const contactData: ContactCard[] = [
   {
     id: "discord",
     platform: "Discord Community",
-    handle: "money272",
-    displayValue: "discord.gg/money272",
+    handle: "mani272",
+    displayValue: "discord.gg/mani272",
     description: "Join the developer guild for live status alerts, integration support, and release notes.",
     actionText: "Copy Discord Tag",
   },
   {
     id: "email",
     platform: "Direct Support Email",
-    handle: "support@money272.example",
-    displayValue: "support@money272.example",
+    handle: "support@mani272.com",
+    displayValue: "support@mani272.com",
     description: "Direct engineering contact for enterprise licensing inquiries, custom contracts, and account audits.",
     actionText: "Copy Support Email",
   },
   {
     id: "github",
     platform: "GitHub Repository",
-    handle: "money272",
-    displayValue: "github.com/money272",
+    handle: "mani272",
+    displayValue: "github.com/sundardas366-eng/money-272",
     description: "Browse open-source client SDK examples, quickstarts, and integration samples.",
     actionText: "Copy GitHub Handle",
   },

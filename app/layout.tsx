@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Money 272 — Software Licensing, Locked Down",
+  title: "MANI 272 — Software Licensing, Locked Down",
   description:
     "Issue keys, bind them to hardware, and verify every session in under 7 seconds. Cryptographic integrity meets friction-free developer operations.",
   metadataBase: new URL(site.url),
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Money 272 — Software Licensing, Locked Down",
+    title: "MANI 272 — Software Licensing, Locked Down",
     description:
       "Issue keys, bind them to hardware, and verify every session in under 7 seconds. Cryptographic integrity meets friction-free developer operations.",
     url: site.url,
@@ -43,13 +43,13 @@ export const metadata: Metadata = {
         url: "/assets/logo.svg",
         width: 1200,
         height: 630,
-        alt: "Money 272 — Cryptographic Licensing Engine",
+        alt: "MANI 272 — Cryptographic Licensing Engine",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Money 272 — Software Licensing, Locked Down",
+    title: "MANI 272 — Software Licensing, Locked Down",
     description:
       "Issue keys, bind them to hardware, and verify every session in under 7 seconds.",
     images: ["/assets/logo.svg"],
@@ -94,11 +94,11 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} data-accent="blue" suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} data-accent="red" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var a=localStorage.getItem("m272_accent");if(a&&["blue","violet","emerald","amber","rose"].indexOf(a)!==-1){document.documentElement.setAttribute("data-accent",a);}}catch(e){}})();`,
+            __html: `(function(){try{var a=localStorage.getItem("m272_accent");if(a&&["red","blue","violet","emerald","amber"].indexOf(a)!==-1){document.documentElement.setAttribute("data-accent",a);}else{document.documentElement.setAttribute("data-accent","red");}}catch(e){}})();`,
           }}
         />
         <script

@@ -1,5 +1,5 @@
 /**
- * MONEY 272 — SITE CONFIGURATION & SINGLE SOURCE OF TRUTH
+ * MANI 272 — SITE CONFIGURATION & SINGLE SOURCE OF TRUTH
  *
  * TO CONNECT YOUR KEYAUTH PORTAL:
  * Change `portalUrl` below to your real portal address (e.g., https://portal.keyauth.cc/app/...).
@@ -7,7 +7,7 @@
  */
 
 export const site = {
-  name: "Money 272",
+  name: "MANI 272",
   shortName: "M272",
   tagline: "Software licensing, locked down.",
   oneLiner: "Issue keys, bind them to hardware, and verify every session in under 7 seconds.",
@@ -18,9 +18,9 @@ export const site = {
   copyrightYear: 2026,
   url: "https://money-272.vercel.app",
   contacts: {
-    discord: "money272",
-    email: "support@money272.example",
-    github: "money272",
+    discord: "mani272",
+    email: "support@mani272.com",
+    github: "mani272",
   },
 } as const;
 
@@ -37,8 +37,7 @@ export function isPortalPlaceholder(url: string = site.portalUrl): boolean {
 export function warnIfPortalPlaceholder(): void {
   if (process.env.NODE_ENV !== "production" && isPortalPlaceholder()) {
     console.warn(
-      "[Money 272] Portal link is using the placeholder: 'https://REPLACE-WITH-YOUR-KEYAUTH-PORTAL'. Set `site.portalUrl` in `lib/site.ts` to your actual KeyAuth portal."
+      "[MANI 272] Portal link is using the placeholder: 'https://REPLACE-WITH-YOUR-KEYAUTH-PORTAL'. Set `site.portalUrl` in `lib/site.ts` to your actual KeyAuth portal."
     );
   }
 }
-

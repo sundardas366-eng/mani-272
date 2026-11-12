@@ -4,9 +4,9 @@
       .tile-bg { fill: #111111; stroke: rgba(255, 255, 255, 0.14); stroke-width: 1px; }
       .tile-text { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 11px; letter-spacing: -0.04em; }
       .tile-m { fill: #f4f4f5; }
-      .accent-elem { fill: #3b82f6; fill: var(--accent, #3b82f6); }
+      .accent-elem { fill: #ef4444; fill: var(--accent, #ef4444); }
       .wordmark-main { font-family: 'Inter', -apple-system, sans-serif; font-weight: 800; font-size: 18px; fill: #f4f4f5; letter-spacing: -0.025em; }
-      .wordmark-accent { font-family: 'Inter', -apple-system, sans-serif; font-weight: 800; font-size: 18px; fill: #3b82f6; fill: var(--accent, #3b82f6); letter-spacing: -0.025em; }
+      .wordmark-accent { font-family: 'Inter', -apple-system, sans-serif; font-weight: 800; font-size: 18px; fill: #ef4444; fill: var(--accent, #ef4444); letter-spacing: -0.025em; }
     </style>
   </defs>
 
@@ -16,10 +16,9 @@
     <tspan class="tile-m">M</tspan><tspan class="accent-elem">272</tspan>
   </text>
 
-  <!-- Wordmark -->
+  <!-- Wordmark: MANI (White) + 272 (Red) -->
   <text x="44" y="26">
-    <tspan class="wordmark-main">Money</tspan>
+    <tspan class="wordmark-main">MANI</tspan>
     <tspan class="wordmark-accent">272</tspan>
   </text>
 </svg>
-

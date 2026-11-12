@@ -25,7 +25,7 @@ export function Footer() {
                 <span className={styles.monoAccent}>272</span>
               </div>
               <div className={styles.wordmark}>
-                <span className={styles.wordmarkPrimary}>Money</span>
+                <span className={styles.wordmarkPrimary}>MANI</span>
                 <span className={styles.wordmarkAccent}>272</span>
               </div>
             </div>

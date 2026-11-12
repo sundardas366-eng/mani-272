@@ -7,9 +7,9 @@ import { Icon } from "@/components/ui/Icon";
 import styles from "./LegalPage.module.css";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Money 272",
+  title: "Terms of Service — MANI 272",
   description:
-    "Licensing conditions, seat policies, and acceptable platform use for Money 272.",
+    "Licensing conditions, seat policies, and acceptable platform use for MANI 272.",
 };
 
 export default function TermsPage() {
@@ -19,7 +19,7 @@ export default function TermsPage() {
         <div className={styles.navBackRow}>
           <Link href="/" className={styles.backLink}>
             <Icon name="arrow-right" size={14} className={styles.flipArrow} />
-            <span>Return to Money 272</span>
+            <span>Return to MANI 272</span>
           </Link>
           <Badge variant="subtle" size="sm">
             LAST REVISED: NOV 2026

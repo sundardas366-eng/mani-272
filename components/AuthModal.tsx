@@ -133,7 +133,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
         {/* Modal Title & Notice */}
         <div className={styles.titleSection}>
           <h2 id="auth-modal-title" className={styles.title}>
-            Sign in to Money 272
+            Sign in to MANI 272
           </h2>
           <p id="auth-modal-description" className={styles.description}>
             You&apos;ll be redirected to the secure licensing portal.

@@ -21,15 +21,15 @@
   --text-muted: #a1a1aa;
   --text-dim: #71717a;
 
-  /* Accent Colors (Default: Blue) */
-  --accent: #3b82f6;
-  --accent-light: #72a5f9;
-  --accent-rgb: 59, 130, 246;
+  /* Accent Colors (Default: Crimson Red & White) */
+  --accent: #ef4444;
+  --accent-light: #f87171;
+  --accent-rgb: 239, 68, 68;
   --accent-contrast: #ffffff;
-  --accent-soft: rgba(59, 130, 246, 0.10);
-  --accent-muted: rgba(59, 130, 246, 0.18);
-  --accent-border: rgba(59, 130, 246, 0.32);
-  --accent-border-strong: rgba(59, 130, 246, 0.55);
+  --accent-soft: rgba(239, 68, 68, 0.12);
+  --accent-muted: rgba(239, 68, 68, 0.20);
+  --accent-border: rgba(239, 68, 68, 0.35);
+  --accent-border-strong: rgba(239, 68, 68, 0.60);
 
   /* Radius Scales */
   --radius-sm: 6px;
@@ -50,6 +50,25 @@
 /* =====================================================================
    THEME SWITCHER OVERRIDES: [data-accent="..."]
    ===================================================================== */
+html[data-accent="red"] {
+  --accent: #ef4444;
+  --accent-light: #f87171;
+  --accent-rgb: 239, 68, 68;
+  --accent-soft: rgba(239, 68, 68, 0.12);
+  --accent-muted: rgba(239, 68, 68, 0.20);
+  --accent-border: rgba(239, 68, 68, 0.35);
+  --accent-border-strong: rgba(239, 68, 68, 0.60);
+}
+
+html[data-accent="blue"] {
+  --accent: #3b82f6;
+  --accent-light: #72a5f9;
+  --accent-rgb: 59, 130, 246;
+  --accent-soft: rgba(59, 130, 246, 0.10);
+  --accent-muted: rgba(59, 130, 246, 0.18);
+  --accent-border: rgba(59, 130, 246, 0.32);
+  --accent-border-strong: rgba(59, 130, 246, 0.55);
+}
 html[data-accent="violet"] {
   --accent: #8b5cf6;
   --accent-light: #a78bfa;

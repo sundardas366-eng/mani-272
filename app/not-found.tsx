@@ -20,7 +20,7 @@ export default function NotFound() {
 
         <h2 className={styles.title}>Cryptographic Route Not Found</h2>
         <p className={styles.description}>
-          The requested path does not resolve to an active verification node or portal gateway on the Money 272 network.
+          The requested path does not resolve to an active verification node or portal gateway on the MANI 272 network.
         </p>
 
         <div className={styles.actionWrap}>

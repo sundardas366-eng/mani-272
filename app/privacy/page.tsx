@@ -7,9 +7,9 @@ import { Icon } from "@/components/ui/Icon";
 import styles from "./LegalPage.module.css";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Money 272",
+  title: "Privacy Policy — MANI 272",
   description:
-    "Data privacy and telemetry standards for Money 272 cryptographic licensing and hardware verification.",
+    "Data privacy and telemetry standards for MANI 272 cryptographic licensing and hardware verification.",
 };
 
 export default function PrivacyPage() {
@@ -19,7 +19,7 @@ export default function PrivacyPage() {
         <div className={styles.navBackRow}>
           <Link href="/" className={styles.backLink}>
             <Icon name="arrow-right" size={14} className={styles.flipArrow} />
-            <span>Return to Money 272</span>
+            <span>Return to MANI 272</span>
           </Link>
           <Badge variant="subtle" size="sm">
             LAST REVISED: NOV 2026

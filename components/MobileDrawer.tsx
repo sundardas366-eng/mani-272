@@ -90,7 +90,7 @@ export function MobileDrawer({ isOpen, onClose, onOpenAuth }: MobileDrawerProps)
         {/* Footer meta */}
         <div className={styles.drawerFooter}>
           <span className={styles.footerMono}>
-            MONEY 272 · 2 LAYERS · 7S VERIFY · 2 SEATS
+            MANI 272 · 2 LAYERS · 7S VERIFY · 2 SEATS
           </span>
         </div>
       </div>

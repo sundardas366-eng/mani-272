@@ -37,13 +37,13 @@ export function Navbar({ onOpenAuth }: NavbarProps) {
       >
         <div className={`container ${styles.navInner}`}>
           {/* Left: Brand Monogram Tile + Wordmark */}
-          <Link href="/" className={styles.brandLink} aria-label="Money 272 Home">
+          <Link href="/" className={styles.brandLink} aria-label="MANI 272 Home">
             <div className={styles.monogramTile} aria-hidden="true">
               <span className={styles.monoM}>M</span>
               <span className={styles.monoAccent}>272</span>
             </div>
             <div className={styles.wordmark}>
-              <span className={styles.wordmarkPrimary}>Money</span>
+              <span className={styles.wordmarkPrimary}>MANI</span>
               <span className={styles.wordmarkAccent}>272</span>
             </div>
           </Link>
