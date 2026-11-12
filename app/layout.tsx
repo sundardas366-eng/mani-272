@@ -5,14 +5,12 @@ import { site } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-sans",
   display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
   variable: "--font-mono",
   display: "swap",
 });
