@@ -11,7 +11,7 @@ export const site = {
   shortName: "M272",
   tagline: "Software licensing, locked down.",
   oneLiner: "Issue keys, bind them to hardware, and verify every session in under 7 seconds.",
-  portalUrl: "https://REPLACE-WITH-YOUR-KEYAUTH-PORTAL", // ← only place to edit
+  portalUrl: "https://auth.mani272api.xyz/", // ← only place to edit
   portalStatus: "LIVE",
   engineVersion: "v2.6.4",
   systemStatusText: "ALL SYSTEMS OPERATIONAL",

@@ -30,12 +30,7 @@ All "Enter Portal", "Portal ↗", "Continue to Portal", and header status links 
 Open [`lib/site.ts`](file:///d:/WEBSIDE%20MANI%20272/lib/site.ts) and edit line **14**:
 
 ```typescript
-portalUrl: "https://REPLACE-WITH-YOUR-KEYAUTH-PORTAL", // ← Only place to edit!
-```
-
-Example:
-```typescript
-portalUrl: "https://portal.keyauth.cc/app/mani272",
+portalUrl: "https://auth.mani272api.xyz/", // ← Configured Portal URL
 ```
 
 - When using the placeholder, links will continue to function safely with a `data-placeholder="true"` attribute and a non-breaking dev-only warning in your browser console.
