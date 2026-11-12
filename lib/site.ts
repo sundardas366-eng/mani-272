@@ -16,7 +16,7 @@ export const site = {
   engineVersion: "v2.6.4",
   systemStatusText: "ALL SYSTEMS OPERATIONAL",
   copyrightYear: 2026,
-  url: "https://money-272.vercel.app",
+  url: "https://mani-272.vercel.app",
   contacts: {
     discord: "mani272",
     email: "support@mani272.com",

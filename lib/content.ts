@@ -280,7 +280,7 @@ export const contactData: ContactCard[] = [
     id: "github",
     platform: "GitHub Repository",
     handle: "mani272",
-    displayValue: "github.com/sundardas366-eng/money-272",
+    displayValue: "github.com/sundardas366-eng/mani-272",
     description: "Browse open-source client SDK examples, quickstarts, and integration samples.",
     actionText: "Copy GitHub Handle",
   },
