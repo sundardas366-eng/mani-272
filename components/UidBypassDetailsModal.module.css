@@ -1,0 +1,309 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 4, 6, 0.84);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 1300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  animation: fadeIn 0.22s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modalWindow {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  background: linear-gradient(180deg, #15151c 0%, #0c0c10 100%);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.9), 0 0 35px rgba(239, 68, 68, 0.2);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.96) translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* MODAL HEADER */
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.headerTitleCol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.badgeLive {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+  width: fit-content;
+}
+
+.pulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+}
+
+.modalTitle {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 19px;
+  font-weight: 800;
+  color: #f4f4f5;
+  margin: 0;
+}
+
+.closeBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-muted, #a1a1aa);
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.closeBtn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+  color: #ffffff;
+}
+
+/* MODAL CONTENT / TERMINAL CARD */
+.modalBody {
+  padding: 22px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.terminalCard {
+  background: #09090d;
+  border: 1px solid rgba(239, 68, 68, 0.28);
+  border-radius: 10px;
+  padding: 22px;
+  font-family: var(--font-mono, monospace);
+  font-size: 13px;
+  color: #e4e4e7;
+  line-height: 1.7;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+  user-select: text;
+}
+
+.terminalTopHeading {
+  font-size: 16px;
+  font-weight: 800;
+  color: #ef4444;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: -0.01em;
+}
+
+.featuresBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #d4d4d8;
+  margin-bottom: 18px;
+}
+
+.featurePoint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.featureDot {
+  color: #ef4444;
+}
+
+.dividerLine {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.45) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  margin: 16px 0;
+}
+
+.sectionHeaderMono {
+  font-weight: 800;
+  color: #ffffff;
+  font-size: 13.5px;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.priceRowsList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.priceRowItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 5px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.priceLabel {
+  color: #a1a1aa;
+}
+
+.priceVal {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+/* BOTTOM ACTION BAR */
+.modalFooter {
+  padding: 16px 24px;
+  background: rgba(0, 0, 0, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.copyDetailsBtn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.copyDetailsBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.copyDetailsBtnSuccess {
+  background: rgba(16, 185, 129, 0.2) !important;
+  border-color: #10b981 !important;
+  color: #10b981 !important;
+}
+
+.ctaGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.portalBtn {
+  background: #ef4444;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+}
+
+.portalBtn:hover {
+  background: #dc2626;
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.5);
+}
+
+.discordBtn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.discordBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .modalBody {
+    padding: 16px;
+  }
+
+  .modalFooter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ctaGroup {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .portalBtn, .discordBtn {
+    flex: 1;
+    justify-content: center;
+  }
+}

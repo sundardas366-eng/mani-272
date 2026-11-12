@@ -1,10 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { site } from "@/lib/site";
+import { UidBypassDetailsModal } from "./UidBypassDetailsModal";
 import styles from "./UidBypassSection.module.css";
 
 export function UidBypassSection() {
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+
   const userPriceList = [
     { duration: "1 Day Pass", price: "$2", badge: "TRIAL" },
     { duration: "3 Days Access", price: "$4", badge: "WEEKEND" },
@@ -45,6 +48,19 @@ export function UidBypassSection() {
           <p className={styles.subHeading}>
             Advanced Aimbot & Visuals · Internal Panel | Main ID Safe · Easy Setup & Full Support
           </p>
+
+          <div className={styles.detailsBtnWrap}>
+            <button
+              type="button"
+              className={styles.viewDetailsBtn}
+              onClick={() => setIsDetailsModalOpen(true)}
+              aria-label="View Full UID Bypass Details"
+            >
+              <span className={styles.detailsIcon} aria-hidden="true">📋</span>
+              <span>View Details</span>
+              <span className={styles.btnArrow} aria-hidden="true">→</span>
+            </button>
+          </div>
         </div>
 
         {/* 4 Feature Pillars */}
@@ -181,17 +197,35 @@ export function UidBypassSection() {
           </div>
         </div>
 
-        {/* Compatibility Notice Banner */}
+        {/* Compatibility Notice Banner with View Details Option */}
         <div className={styles.noticeBanner}>
-          <span className={styles.noticeIcon} aria-hidden="true">
-            ℹ️
-          </span>
-          <div className={styles.noticeText}>
-            <strong>Emulator Compatibility Notice:</strong> All Servers Working on Regular Emulators{" "}
-            <span className={styles.noticeHighlight}>(Except MEmu and LDPlayer)</span>. All keys and API tokens are cryptographically secured with HMAC-SHA256 hardware handshakes.
+          <div className={styles.noticeLeft}>
+            <span className={styles.noticeIcon} aria-hidden="true">
+              ℹ️
+            </span>
+            <div className={styles.noticeText}>
+              <strong>Emulator Compatibility Notice:</strong> All Servers Working on Regular Emulators{" "}
+              <span className={styles.noticeHighlight}>(Except MEmu and LDPlayer)</span>. All keys and API tokens are cryptographically secured with HMAC-SHA256 hardware handshakes.
+            </div>
           </div>
+
+          <button
+            type="button"
+            className={styles.bannerDetailsBtn}
+            onClick={() => setIsDetailsModalOpen(true)}
+            aria-label="Open detailed specifications modal"
+          >
+            <span>View Details 📋</span>
+          </button>
         </div>
       </div>
+
+      {/* UID Bypass Full Details Modal */}
+      <UidBypassDetailsModal
+        isOpen={isDetailsModalOpen}
+        onClose={() => setIsDetailsModalOpen(false)}
+      />
     </section>
   );
 }
+
