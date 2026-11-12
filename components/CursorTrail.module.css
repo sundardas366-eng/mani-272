@@ -5,56 +5,5 @@
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 999998;
-}
-
-/* Fluid Elastic Liquid Ring Follower */
-.followerRing {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  pointer-events: none;
   z-index: 999999;
-  border: 1.5px solid var(--accent, #ef4444);
-  background: radial-gradient(circle, var(--accent-soft, rgba(239, 68, 68, 0.14)) 0%, rgba(239, 68, 68, 0.02) 70%, transparent 100%);
-  box-shadow: 0 0 16px var(--accent-border, rgba(239, 68, 68, 0.35)),
-              inset 0 0 8px var(--accent-soft, rgba(239, 68, 68, 0.2));
-  transform-origin: center center;
-  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.25s ease,
-              border-color 0.25s ease,
-              opacity 0.2s ease;
-  will-change: transform, width, height, opacity;
-  opacity: 0;
-}
-
-/* Hovering over buttons or links */
-.followerHover {
-  width: 48px;
-  height: 48px;
-  border-color: #ffffff;
-  background: radial-gradient(circle, var(--accent-muted, rgba(239, 68, 68, 0.25)) 0%, rgba(239, 68, 68, 0.08) 70%, transparent 100%);
-  box-shadow: 0 0 24px var(--accent, #ef4444),
-              inset 0 0 12px var(--accent-soft, rgba(239, 68, 68, 0.3));
-}
-
-/* Click / Mousedown state */
-.followerClick {
-  width: 18px;
-  height: 18px;
-  border-color: #ffffff;
-  background: var(--accent, #ef4444);
-  box-shadow: 0 0 28px #ffffff;
-}
-
-.visible {
-  opacity: 1;
-}
-
-.hidden {
-  opacity: 0;
 }
