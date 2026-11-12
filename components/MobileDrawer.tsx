@@ -11,7 +11,7 @@ import styles from "./MobileDrawer.module.css";
 interface MobileDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  onOpenAuth: () => void;
+  onOpenAuth?: () => void;
 }
 
 export function MobileDrawer({ isOpen, onClose, onOpenAuth }: MobileDrawerProps) {
@@ -72,18 +72,6 @@ export function MobileDrawer({ isOpen, onClose, onOpenAuth }: MobileDrawerProps)
             onClick={onClose}
           >
             Enter KeyAuth Portal
-          </Button>
-
-          <Button
-            variant="outline"
-            size="md"
-            fullWidth
-            onClick={() => {
-              onClose();
-              onOpenAuth();
-            }}
-          >
-            Sign in / Access Gateway
           </Button>
         </div>
 

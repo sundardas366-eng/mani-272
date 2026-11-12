@@ -9,10 +9,10 @@ import { HeroConsole } from "./HeroConsole";
 import styles from "./Hero.module.css";
 
 interface HeroProps {
-  onOpenAuth: () => void;
+  onOpenAuth?: () => void;
 }
 
-export function Hero({ onOpenAuth }: HeroProps) {
+export function Hero({ onOpenAuth }: HeroProps = {}) {
   return (
     <section className={styles.heroSection} aria-labelledby="hero-heading">
       <div className={styles.heroBackgroundMesh} aria-hidden="true" />
@@ -44,7 +44,7 @@ export function Hero({ onOpenAuth }: HeroProps) {
               {heroContent.description}
             </p>
 
-            {/* 3 CTAs: Portal (Solid), How it Works (Outline), Sign In (Ghost) */}
+            {/* 2 CTAs: Portal (Solid), How it Works (Outline) */}
             <div className={styles.ctaGroup}>
               <Button
                 asPortalLink
@@ -62,15 +62,6 @@ export function Hero({ onOpenAuth }: HeroProps) {
                 className={styles.ctaSecondary}
               >
                 {heroContent.ctaSecondary}
-              </Button>
-
-              <Button
-                variant="ghost"
-                size="lg"
-                onClick={onOpenAuth}
-                className={styles.ctaGhost}
-              >
-                {heroContent.ctaGhost}
               </Button>
             </div>
 

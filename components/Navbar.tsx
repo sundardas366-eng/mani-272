@@ -12,10 +12,10 @@ import { MobileDrawer } from "./MobileDrawer";
 import styles from "./Navbar.module.css";
 
 interface NavbarProps {
-  onOpenAuth: () => void;
+  onOpenAuth?: () => void;
 }
 
-export function Navbar({ onOpenAuth }: NavbarProps) {
+export function Navbar({ onOpenAuth }: NavbarProps = {}) {
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -90,15 +90,6 @@ export function Navbar({ onOpenAuth }: NavbarProps) {
               Portal
             </Button>
 
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={onOpenAuth}
-              className={styles.signInBtn}
-            >
-              Sign in
-            </Button>
-
             {/* Mobile Hamburger Button */}
             <button
               type="button"
@@ -119,7 +110,7 @@ export function Navbar({ onOpenAuth }: NavbarProps) {
         onClose={() => setDrawerOpen(false)}
         onOpenAuth={() => {
           setDrawerOpen(false);
-          onOpenAuth();
+          onOpenAuth?.();
         }}
       />
     </>
