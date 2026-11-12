@@ -44,8 +44,8 @@ export function ProductsModal({
 
   const categoryList = [
     { id: "ALL", label: `ALL (${productsData.length})` },
-    { id: "VIP", label: `VIP (${productsData.filter((p) => p.category === "VIP").length})` },
     { id: "BYPASS", label: `BYPASS (${productsData.filter((p) => p.category === "BYPASS").length})` },
+    { id: "VIP", label: `VIP (${productsData.filter((p) => p.category === "VIP").length})` },
     { id: "TOOL", label: `TOOLS (${productsData.filter((p) => p.category === "TOOL").length})` },
   ];
 
