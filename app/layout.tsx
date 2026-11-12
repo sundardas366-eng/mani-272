@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 import { CursorTrail } from "@/components/CursorTrail";
 import { TopMusicBar } from "@/components/TopMusicBar";
 import { ReactBitsBackground } from "@/components/backgrounds/ReactBitsBackground";
+import { ScreenTapEffects } from "@/components/interactive/ScreenTapEffects";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -115,6 +116,7 @@ export default function RootLayout({
         </a>
         <TopMusicBar />
         <CursorTrail />
+        <ScreenTapEffects />
         <ReactBitsBackground />
         <div className="ambient-glow-mesh" aria-hidden="true" />
         <div className="cyber-grid-overlay" aria-hidden="true" />

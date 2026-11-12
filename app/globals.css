@@ -281,6 +281,19 @@ main {
   }
 }
 
+/* 3D Corner-Press Interactive Hardware Acceleration */
+.productCard,
+.codeWindow,
+.consoleCard,
+.resellerBanner,
+.stripCard,
+.productTotalCta,
+.productTotalBtn,
+[data-corner-press] {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
 /* =====================================================================
    PREFERS REDUCED MOTION OVERRIDE
    ===================================================================== */
