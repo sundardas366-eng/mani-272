@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { StatsStrip } from "@/components/StatsStrip";
 import { LicenseSection } from "@/components/LicenseSection";
+import { SdksSection } from "@/components/SdksSection";
 import { StepsSection } from "@/components/StepsSection";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactSection } from "@/components/ContactSection";
@@ -27,7 +28,10 @@ export default function HomePage() {
         {/* 4. Licence / Features Section (4 blocks + mock card + MeaningRow) */}
         <LicenseSection />
 
-        {/* 5. How It Works (3 step cards) */}
+        {/* 5. Developer SDKs Section (Integrate in Under 3 Minutes) */}
+        <SdksSection />
+
+        {/* 6. How It Works (3 step cards) */}
         <StepsSection />
 
         {/* 6. FAQ Section (2x2 grid cards) */}

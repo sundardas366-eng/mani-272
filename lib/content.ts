@@ -54,6 +54,7 @@ export interface ContactCard {
 
 export const navLinks: NavLink[] = [
   { label: "Features", href: "#features" },
+  { label: "SDKs", href: "#sdks" },
   { label: "How It Works", href: "#how" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
