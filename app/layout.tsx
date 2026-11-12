@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
+import { CursorTrail } from "@/components/CursorTrail";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -110,6 +111,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
+        <CursorTrail />
         <div className="ambient-glow-mesh" aria-hidden="true" />
         <div className="cyber-grid-overlay" aria-hidden="true" />
         <div className="vignette-overlay" aria-hidden="true" />
