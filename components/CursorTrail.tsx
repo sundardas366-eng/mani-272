@@ -1,88 +1,57 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./CursorTrail.module.css";
 
-interface Particle {
+interface TrailPoint {
   x: number;
   y: number;
-  vx: number;
-  vy: number;
-  size: number;
-  initialSize: number;
-  life: number;
-  maxLife: number;
-  colorRgb: [number, number, number];
-  isSpark?: boolean;
+  time: number;
 }
 
-interface Shockwave {
+interface ClickRipple {
   x: number;
   y: number;
   radius: number;
   maxRadius: number;
-  opacity: number;
-  colorRgb: [number, number, number];
+  alpha: number;
 }
 
 export function CursorTrail() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const dotRef = useRef<HTMLDivElement | null>(null);
-  const ringRef = useRef<HTMLDivElement | null>(null);
-
-  const [isVisible, setIsVisible] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-  const [isSupported, setIsSupported] = useState(false);
 
   useEffect(() => {
-    // Only enable on desktop pointer devices with fine cursor
     if (typeof window === "undefined") return;
-    const isTouch = window.matchMedia("(pointer: coarse)").matches;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (isTouch || prefersReducedMotion) {
-      setIsSupported(false);
-      return;
-    }
-
-    setIsSupported(true);
 
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
+    // Handle canvas dimensions safely
     let dpr = window.devicePixelRatio || 1;
-    let width = (canvas.width = window.innerWidth * dpr);
-    let height = (canvas.height = window.innerHeight * dpr);
-    ctx.scale(dpr, dpr);
-
-    const handleResize = () => {
-      if (!canvas) return;
+    const resizeCanvas = () => {
       dpr = window.devicePixelRatio || 1;
-      width = canvas.width = window.innerWidth * dpr;
-      height = canvas.height = window.innerHeight * dpr;
-      ctx.scale(dpr, dpr);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
     };
 
-    window.addEventListener("resize", handleResize);
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
 
-    // Mouse coordinates tracking
+    // Trail storage
+    const points: TrailPoint[] = [];
+    const ripples: ClickRipple[] = [];
+    const TRAIL_DURATION = 320; // milliseconds the line trail persists
+
     let mouseX = -100;
     let mouseY = -100;
-    let prevMouseX = -100;
-    let prevMouseY = -100;
+    let isMouseOnScreen = false;
 
-    let smoothRingX = -100;
-    let smoothRingY = -100;
-
-    let particles: Particle[] = [];
-    let shockwaves: Shockwave[] = [];
-    let animId: number;
-
-    // Helper to get active theme accent RGB
+    // Helper to get active accent color (defaults to Crimson Red)
     const getAccentRgb = (): [number, number, number] => {
       try {
         const computed = getComputedStyle(document.documentElement);
@@ -94,266 +63,158 @@ export function CursorTrail() {
           }
         }
       } catch {
-        // fallback to Crimson Red
+        // Fallback
       }
-      return [239, 68, 68];
-    };
-
-    // Spawn trail particles with distance interpolation
-    const addTrailParticles = (x1: number, y1: number, x2: number, y2: number) => {
-      const dist = Math.hypot(x2 - x1, y2 - y1);
-      const steps = Math.max(1, Math.min(Math.floor(dist / 4), 8));
-      const accent = getAccentRgb();
-
-      for (let i = 0; i < steps; i++) {
-        const t = i / steps;
-        const px = x1 + (x2 - x1) * t + (Math.random() - 0.5) * 4;
-        const py = y1 + (y2 - y1) * t + (Math.random() - 0.5) * 4;
-
-        // Slight drift velocity
-        const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 0.7;
-
-        const maxLife = 24 + Math.random() * 12;
-        const size = 3 + Math.random() * 3.5;
-
-        // Alternate between bright accent and hot white core
-        const useWhite = Math.random() > 0.65;
-        const colorRgb: [number, number, number] = useWhite ? [255, 255, 255] : accent;
-
-        particles.push({
-          x: px,
-          y: py,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 0.15, // soft upward drift
-          size,
-          initialSize: size,
-          life: maxLife,
-          maxLife,
-          colorRgb,
-        });
-      }
-
-      // Cap particles for peak 60fps performance
-      if (particles.length > 180) {
-        particles.splice(0, particles.length - 180);
-      }
-    };
-
-    // Spawn click shockwave & burst sparks
-    const triggerClickBurst = (x: number, y: number) => {
-      const accent = getAccentRgb();
-
-      // Shockwave ring
-      shockwaves.push({
-        x,
-        y,
-        radius: 6,
-        maxRadius: 42,
-        opacity: 0.85,
-        colorRgb: accent,
-      });
-
-      // Radiating sparks
-      const sparkCount = 14;
-      for (let i = 0; i < sparkCount; i++) {
-        const angle = (Math.PI * 2 * i) / sparkCount + (Math.random() - 0.5) * 0.4;
-        const speed = 2.5 + Math.random() * 3.5;
-        const maxLife = 22 + Math.random() * 10;
-        const size = 2 + Math.random() * 2;
-
-        particles.push({
-          x,
-          y,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          size,
-          initialSize: size,
-          life: maxLife,
-          maxLife,
-          colorRgb: Math.random() > 0.5 ? [255, 255, 255] : accent,
-          isSpark: true,
-        });
-      }
+      return [239, 68, 68]; // Crimson Red
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      setIsVisible(true);
-      const currentX = e.clientX;
-      const currentY = e.clientY;
+      isMouseOnScreen = true;
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      const now = performance.now();
 
-      if (prevMouseX > 0 && prevMouseY > 0) {
-        addTrailParticles(prevMouseX, prevMouseY, currentX, currentY);
-      }
-
-      prevMouseX = currentX;
-      prevMouseY = currentY;
-      mouseX = currentX;
-      mouseY = currentY;
-
-      // Update instant dot position
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
-      }
-
-      // Check hover on interactive targets
-      const target = e.target as HTMLElement | null;
-      if (target) {
-        const interactive = target.closest(
-          'a, button, [role="button"], input, select, textarea, label, [data-interactive="true"]'
-        );
-        setIsHovered(!!interactive);
+      // Avoid duplicate points if mouse barely moved
+      const lastPoint = points[points.length - 1];
+      if (!lastPoint || Math.hypot(lastPoint.x - mouseX, lastPoint.y - mouseY) > 2) {
+        points.push({ x: mouseX, y: mouseY, time: now });
       }
     };
 
     const handleMouseDown = (e: MouseEvent) => {
-      setIsClicked(true);
-      triggerClickBurst(e.clientX, e.clientY);
-    };
-
-    const handleMouseUp = () => {
-      setIsClicked(false);
-    };
-
-    const handleMouseEnter = () => {
-      setIsVisible(true);
+      ripples.push({
+        x: e.clientX,
+        y: e.clientY,
+        radius: 4,
+        maxRadius: 36,
+        alpha: 0.9,
+      });
     };
 
     const handleMouseLeave = () => {
-      setIsVisible(false);
-      prevMouseX = -100;
-      prevMouseY = -100;
+      isMouseOnScreen = false;
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("mousedown", handleMouseDown, { passive: true });
-    window.addEventListener("mouseup", handleMouseUp, { passive: true });
-    document.addEventListener("mouseenter", handleMouseEnter);
     document.addEventListener("mouseleave", handleMouseLeave);
 
-    // Physics Animation Loop
+    let animId: number;
+
     const render = () => {
-      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      const now = performance.now();
 
-      // 1. Smooth lerp follower ring
-      if (mouseX > 0 && mouseY > 0) {
-        if (smoothRingX < 0) {
-          smoothRingX = mouseX;
-          smoothRingY = mouseY;
-        } else {
-          smoothRingX += (mouseX - smoothRingX) * 0.18;
-          smoothRingY += (mouseY - smoothRingY) * 0.18;
-        }
+      // Clear full canvas in physical pixels
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        if (ringRef.current) {
-          ringRef.current.style.transform = `translate3d(${smoothRingX}px, ${smoothRingY}px, 0) translate(-50%, -50%)`;
+      ctx.save();
+      // Scale by DPR so coordinates match clientX/clientY exactly
+      ctx.scale(dpr, dpr);
+
+      // 1. Filter out expired trail points
+      while (points.length > 0 && now - points[0].time > TRAIL_DURATION) {
+        points.shift();
+      }
+
+      const accent = getAccentRgb();
+      const [r, g, b] = accent;
+
+      // 2. Draw Smooth Laser Line Trail
+      if (points.length > 1) {
+        for (let i = 1; i < points.length; i++) {
+          const p1 = points[i - 1];
+          const p2 = points[i];
+
+          // Progress along the trail: 0 (oldest/tail) to 1 (newest/head)
+          const age = now - p2.time;
+          const progress = Math.max(0, Math.min(1, 1 - age / TRAIL_DURATION));
+
+          // Taper line width: starts at 7.5px at cursor head, tapers to 1px at the tail
+          const width = 1 + Math.pow(progress, 1.4) * 6.5;
+          const alpha = Math.pow(progress, 1.2);
+
+          // A) Outer Glow Ribbon (Crimson Red)
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.lineCap = "round";
+          ctx.lineJoin = "round";
+          ctx.lineWidth = width * 1.8;
+          ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${(alpha * 0.55).toFixed(3)})`;
+          ctx.shadowBlur = 14;
+          ctx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.8)`;
+          ctx.stroke();
+
+          // B) Inner Bright White Core (Laser Effect)
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.lineCap = "round";
+          ctx.lineJoin = "round";
+          ctx.lineWidth = Math.max(0.8, width * 0.45);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${(alpha * 0.95).toFixed(3)})`;
+          ctx.shadowBlur = 4;
+          ctx.shadowColor = "#ffffff";
+          ctx.stroke();
         }
       }
 
-      // 2. Render shockwaves
-      for (let i = shockwaves.length - 1; i >= 0; i--) {
-        const sw = shockwaves[i];
-        sw.radius += (sw.maxRadius - sw.radius) * 0.16 + 1.2;
-        sw.opacity *= 0.88;
-
-        if (sw.opacity < 0.02 || sw.radius >= sw.maxRadius) {
-          shockwaves.splice(i, 1);
-          continue;
-        }
-
-        const [r, g, b] = sw.colorRgb;
-        ctx.save();
+      // 3. Leading Head Glow Orb (Just behind cursor tip)
+      if (isMouseOnScreen && points.length > 0) {
+        const head = points[points.length - 1];
         ctx.beginPath();
-        ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${sw.opacity.toFixed(3)})`;
-        ctx.lineWidth = 1.8;
-        ctx.stroke();
-        ctx.restore();
-      }
-
-      // 3. Render and update particles
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i];
-        p.life -= 1;
-
-        if (p.life <= 0) {
-          particles.splice(i, 1);
-          continue;
-        }
-
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.isSpark) {
-          p.vx *= 0.92;
-          p.vy *= 0.92;
-          p.vy += 0.08; // subtle gravity
-        } else {
-          p.vx *= 0.96;
-          p.vy *= 0.96;
-        }
-
-        const progress = p.life / p.maxLife; // 1 -> 0
-        const currentRadius = p.initialSize * Math.pow(progress, 0.7);
-        const alpha = Math.pow(progress, 1.4);
-
-        const [r, g, b] = p.colorRgb;
-
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, Math.max(0.2, currentRadius), 0, Math.PI * 2);
-
-        // Soft radial glow for lead particles
-        if (progress > 0.5) {
-          ctx.shadowBlur = 10;
-          ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${(alpha * 0.8).toFixed(3)})`;
-        }
-
-        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha.toFixed(3)})`;
+        ctx.arc(head.x, head.y, 4, 0, Math.PI * 2);
+        ctx.fillStyle = "#ffffff";
+        ctx.shadowBlur = 16;
+        ctx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.9)`;
         ctx.fill();
-        ctx.restore();
+
+        ctx.beginPath();
+        ctx.arc(head.x, head.y, 7, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.35)`;
+        ctx.fill();
       }
 
+      // 4. Draw Click Shockwave Ripples
+      for (let i = ripples.length - 1; i >= 0; i--) {
+        const rip = ripples[i];
+        rip.radius += (rip.maxRadius - rip.radius) * 0.18 + 1.2;
+        rip.alpha *= 0.88;
+
+        if (rip.alpha < 0.02 || rip.radius >= rip.maxRadius) {
+          ripples.splice(i, 1);
+          continue;
+        }
+
+        ctx.beginPath();
+        ctx.arc(rip.x, rip.y, rip.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${rip.alpha.toFixed(3)})`;
+        ctx.lineWidth = 2;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.8)`;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(rip.x, rip.y, Math.max(1, rip.radius * 0.7), 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(255, 255, 255, ${(rip.alpha * 0.8).toFixed(3)})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+
+      ctx.restore();
       animId = requestAnimationFrame(render);
     };
 
     animId = requestAnimationFrame(render);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mousedown", handleMouseDown);
-      window.removeEventListener("mouseup", handleMouseUp);
-      document.removeEventListener("mouseenter", handleMouseEnter);
       document.removeEventListener("mouseleave", handleMouseLeave);
       cancelAnimationFrame(animId);
     };
   }, []);
 
-  if (!isSupported) {
-    return null;
-  }
-
-  return (
-    <div
-      className={`${styles.cursorContainer} ${
-        isHovered ? styles.cursorHover : ""
-      } ${isClicked ? styles.cursorClick : ""}`}
-      aria-hidden="true"
-    >
-      <canvas ref={canvasRef} className={styles.canvas} />
-      <div
-        ref={ringRef}
-        className={`${styles.cursorRing} ${
-          isVisible ? styles.cursorVisible : styles.cursorHidden
-        }`}
-      />
-      <div
-        ref={dotRef}
-        className={`${styles.cursorDot} ${
-          isVisible ? styles.cursorVisible : styles.cursorHidden
-        }`}
-      />
-    </div>
-  );
+  return <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />;
 }
