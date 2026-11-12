@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { CursorTrail } from "@/components/CursorTrail";
+import { TopMusicBar } from "@/components/TopMusicBar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -111,6 +112,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
+        <TopMusicBar />
         <CursorTrail />
         <div className="ambient-glow-mesh" aria-hidden="true" />
         <div className="cyber-grid-overlay" aria-hidden="true" />

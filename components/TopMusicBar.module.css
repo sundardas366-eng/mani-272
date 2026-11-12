@@ -1,0 +1,186 @@
+.topBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(180deg, #121215 0%, #0a0a0c 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.65);
+}
+
+.container {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* LEFT TRACK INFO */
+.trackInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  user-select: none;
+  min-width: 0;
+}
+
+.badgeTag {
+  color: #f4f4f5;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dotLive {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+  animation: pulseDot 1.8s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.trackTitle {
+  color: var(--text-main, #f4f4f5);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trackArtist {
+  color: var(--text-dim, #71717a);
+  white-space: nowrap;
+}
+
+/* ANIMATED EQUALIZER BARS */
+.equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 12px;
+  margin-left: 2px;
+}
+
+.bar {
+  width: 2.5px;
+  height: 3px;
+  background-color: #ef4444;
+  border-radius: 1px;
+  transition: height 0.2s ease;
+}
+
+.playing .bar:nth-child(1) {
+  animation: barBounce 0.9s infinite ease-in-out alternate;
+}
+
+.playing .bar:nth-child(2) {
+  animation: barBounce 0.7s infinite 0.2s ease-in-out alternate;
+}
+
+.playing .bar:nth-child(3) {
+  animation: barBounce 0.8s infinite 0.4s ease-in-out alternate;
+}
+
+.playing .bar:nth-child(4) {
+  animation: barBounce 0.6s infinite 0.1s ease-in-out alternate;
+}
+
+@keyframes barBounce {
+  0% { height: 3px; }
+  100% { height: 12px; }
+}
+
+/* RIGHT TOGGLE CONTROLS */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.toggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 5px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted, #a1a1aa);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.toggleBtn:hover {
+  color: #ffffff;
+  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.toggleBtnActive {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.statusIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.switchIndicator {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.toggleBtnActive .switchIndicator {
+  background: #ffffff;
+  color: #ef4444;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 640px) {
+  .trackArtist {
+    display: none;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+}

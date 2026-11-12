@@ -344,3 +344,4 @@ curl -X POST "https://auth.mani272api.xyz/api/v2/verify" \\
     </section>
   );
 }
+
