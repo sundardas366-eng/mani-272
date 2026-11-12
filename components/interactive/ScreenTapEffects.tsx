@@ -112,7 +112,6 @@ export function ScreenTapEffects() {
       const interactiveSelector = `
         .productCard,
         .codeWindow,
-        .consoleCard,
         .resellerBanner,
         .stripCard,
         .productTotalCta,
@@ -251,3 +250,4 @@ export function ScreenTapEffects() {
     />
   );
 }
+
