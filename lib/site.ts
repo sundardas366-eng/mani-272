@@ -19,7 +19,7 @@ export const site = {
   url: "https://mani-272.vercel.app",
   contacts: {
     discord: "mani272",
-    email: "support@mani272.com",
+    email: "sundardas366@gmail.com",
     github: "mani272",
   },
 } as const;

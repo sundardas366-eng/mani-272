@@ -547,8 +547,8 @@ export const contactData: ContactCard[] = [
   {
     id: "email",
     platform: "Direct Support Email",
-    handle: "support@mani272.com",
-    displayValue: "support@mani272.com",
+    handle: "sundardas366@gmail.com",
+    displayValue: "sundardas366@gmail.com",
     description: "Direct engineering contact for enterprise licensing inquiries, custom contracts, and account audits.",
     actionText: "Copy Support Email",
   },
